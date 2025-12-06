@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faiz Uddin | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Typing Animation
+  const lines = document.querySelectorAll('.typing-line');
+  lines.forEach((line, index) => {
+    const text = line.innerHTML;
+    line.innerHTML = '';
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        line.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 60);
+      }
+    }
+
+    setTimeout(type, index * 2000);
+  });
+
+  // Hover Sound
+  document.querySelectorAll('.hero-socials a').forEach(icon => {
+    icon.addEventListener('mouseenter', () => {
+      document.getElementById('hover-sound').play();
+    });
+  });
+
+});
+</script>
+
+</head>
+<body>
+  <section id="hero-ultra">
+
+  <!-- LEFT TEXT AREA -->
+   <div class="hero-left">
+    <h1>
+      <span class="typing-line"></span>
+      <span class="dark-text">Hi, I'm </span>
+      <span class="neon-text">Faiz Uddin</span>
+      <a href="https://drive.google.com/file/d/13ZclGP5HDAKtV4YbO3pACwgmGFPKGTc7/view?usp=drive_link" download class="download-btn">Download CV</a>
+    </h1>
+
+    <h2>
+      <span class="typing-line"></span>
+      <span class="neon-text">Cyber Wolf,</span>
+      <span class="dark-text">is my Pseudo name</span>
+      
+    </h2>
+
+    <h3>
+      <span class="typing-line"></span>
+      <span class="dark-text">I am a </span>
+      <span class="neon-text">Cybersecurity Expert</span>
+    </h3>
+
+    <p class="dark-text">Let's dive with me</p>
+
+    <!-- SOCIAL ICONS -->
+    <div class="hero-socials">
+      <a href="https://github.com/cyberwolf6938" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="www.linkedin.com/in/faiz-uddin-8bbb39348" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:faizfaheem6938@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://medium.com/@falolopopololopopo" target="_blank"><i class="fab fa-medium"></i></a>
+      <a href="https://thecyberwolf-blog.blogspot.com/" target="_blank"><i class="fas fa-blog"></i></a>
+    </div>
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="hero-image-box">
+    <div class="cyber-frame">
+        <img src="your-photo.jpg" alt="Faiz Uddin">
+    </div>
+</div>
+
+
+</section>
+
+
+  <section id="about">
+  <div class="about-container">
+
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about-card">
+      <div class="about-left">
+        <h3>Hello! I'm <span>CyberWolf</span> 👋</h3>
+
+        <p class="about-text">
+          I’m a passionate <strong>Cybersecurity Learner</strong> and 
+          <strong>Tech Enthusiast</strong> who loves exploring digital defense,
+          ethical hacking, and real-world security challenges.  
+          I specialize in building <strong>security tools</strong>, 
+          analyzing threats, and researching modern cyber techniques.
+
+          <br><br>
+
+          My goal is to become a top-tier cybersecurity professional, create
+          innovative solutions, and help make digital environments safer  
+          with creativity, problem-solving, and continuous learning.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-box">
+            <i class="fas fa-shield-alt"></i>
+            <p>Cybersecurity</p>
+          </div>
+
+          <div class="highlight-box">
+            <i class="fas fa-code"></i>
+            <p>Tech Projects</p>
+          </div>
+
+          <div class="highlight-box">
+            <i class="fas fa-brain"></i>
+            <p>Problem Solving</p>
+          </div>
+
+          <div class="highlight-box">
+            <i class="fas fa-laptop-code"></i>
+            <p>Learning Daily</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+
+<section id="education">
+  <h2 class="section-title"><span>Education</span></h2>
+  
+  <div class="education-grid">
+    <!-- Diploma Card -->
+    <div class="edu-card">
+      <div class="edu-card-inner">
+        <div class="edu-card-front">
+          Diploma in Advanced Cyber Security
+        </div>
+        <div class="edu-card-back">
+          PNY Training - Arfa Karim Technology
+        </div>
+      </div>
+    </div>
+
+    <!-- Bachelors Card -->
+    <div class="edu-card">
+      <div class="edu-card-inner">
+        <div class="edu-card-front">
+          Bachelors in Chemical Engineering – 5th Semester (Drop out)
+        </div>
+        <div class="edu-card-back">
+          University of Engineering and Technology – Lahore
+        </div>
+      </div>
+    </div>
+
+    <!-- Fsc Pre Engineering Card -->
+    <div class="edu-card">
+      <div class="edu-card-inner">
+        <div class="edu-card-front">
+          Fsc Pre Engineering
+        </div>
+        <div class="edu-card-back">
+          Pak Fazaia Inter College – Lahore
+        </div>
+      </div>
+    </div>
+
+    <!-- Metric Card -->
+    <div class="edu-card">
+      <div class="edu-card-inner">
+        <div class="edu-card-front">
+          Metric
+        </div>
+        <div class="edu-card-back">
+          Army Public School – Lahore
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="skills">
+   <div class="skills-container"></div>
+<h2 class="section-title">My <span>Skills</span></h2>
+  <div class="skills-boxes">
+
+    <div class="skill-box">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>Operating Systems: Linux (Kali, Ubuntu, Parrot), Windows (Server, 7, 10, 11)</li>
+        <li>Network Security (TCP/IP, Firewalls, VPN, IDS/IPS)</li>
+        <li>SOC Monitoring & Security Operations</li>
+        <li>Penetration Testing (Vulnerability Assessment, Web & Network Pentesting, Social Engineering)</li>
+        <li>Cloud Security: AWS, Azure basics, Azure 900, Azure 104</li>
+        <li>Cyber Threat Management & Incident Response</li>
+        <li>OSINT & Threat Intelligence</li>
+        <li>Malware Analysis & Threat Hunting</li>
+        <li>Endpoint Security Suite Management (CrowdStrike, Symantec, McAfee)</li>
+      </ul>
+    </div>
+
+    <div class="skill-box">
+      <h3>Tools & Technologies</h3>
+      <ul>
+        <li>SIEM: Splunk, QRadar, ELK</li>
+        <li>Pentesting Tools: Nmap, Metasploit, Burp Suite, SQLmap, Nikto, Hydra, Netcat, Gobuster, Aircrack-ng</li>
+        <li>Vulnerability Scanners: Nessus, OpenVAS</li>
+        <li>Packet Analysis: Wireshark, tcpdump, Suricata</li>
+        <li>Networking Labs: Cisco Packet Tracer, GNS3</li>
+        <li>Threat Intelligence / OSINT Tools: Maltego, Shodan, Recon-ng</li>
+        <li>Platforms: TryHackMe, Hack The Box, PortSwigger, DVWA, Over the Wire</li>
+      </ul>
+    </div>
+
+    <div class="skill-box">
+      <h3>Programming Languages</h3>
+      <ul>
+        <li>Python</li>
+        <li>Bash</li>
+        <li>PowerShell</li>
+        <li>GitHub</li>
+        <li>SQL</li>
+      </ul>
+    </div>
+
+    <div class="skill-box">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Analytical Thinking & Problem Solving</li>
+        <li>Attention to Detail</li>
+        <li>Quick Learner & Adaptability</li>
+        <li>Team Collaboration & Communication</li>
+        <li>Report Writing</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+
+
+
+<!-- Medium Articles Section -->
+<section id="medium">
+   <div class="medium-container"></div>
+  <h2 class="section-title">Medium <span>Articles</span></h2>
+
+  <div class="medium-grid">
+
+    <!-- ARTICLE 1 -->
+    <div class="medium-card">
+      <a href="https://medium.com/meetcyber/how-to-check-if-your-whatsapp-is-hacked-expert-cybersecurity-guide-2025-edition-0955229ff7d4" 
+           target="_blank">
+        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*-8TJva4Z4Mb2Gd7r1PsRFQ.jpeg" alt="Article Image">
+       </a>
+      <p>How to Check if Your WhatsApp is Hacked – Expert Cybersecurity Guide (2025)</p>
+    </div>
+
+    <!-- ARTICLE 2 -->
+    <div class="medium-card">
+      <a href="https://medium.com/meetcyber/is-your-gmail-hacked-a-hacker-style-guide-to-detect-protect-recover-your-google-account-2025-d4d80668e807" 
+           target="_blank">
+        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*cc1V9JB_I0YcO2Q1.jpg" alt="Article Image">
+       </a>
+      <p>Is Your Gmail Hacked? Detect, Protect & Recover (2025 Guide)</p>
+    </div>
+
+    <!-- ARTICLE 3 -->
+    <div class="medium-card">
+      <a href="https://medium.com/@falolopopololopopo/how-hackers-hack-instagram-and-how-you-can-detect-protect-recover-your-account-full-guide-297e3707a016" 
+           target="_blank">
+      <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*1eGk_CTtC2v-1CZKUSTAIw.jpeg" alt="Article Image">
+      </a>
+      <p>How Hackers Hack Instagram – Full Detection & Protection Guide</p>
+    </div>
+
+    <!-- ARTICLE 4 -->
+    <div class="medium-card">
+      <a href="https://medium.com/@falolopopololopopo/how-to-stay-anonymous-on-the-internet-a-beginners-guide-48c08571e9b4" 
+           target="_blank">
+      <img src="https://miro.medium.com/v2/resize:fit:3840/format:webp/1*59pIKFTDn2pA9-VGskYoOw.png" alt="Article Image">
+       </a>
+      <p>How to Stay Anonymous on the Internet – Beginner’s Guide</p>
+    </div>
+
+    <!-- ARTICLE 5 -->
+    <div class="medium-card">
+       <a href="https://medium.com/@falolopopololopopo/evil-twin-wi-fi-attacks-how-to-spot-what-the-risks-are-and-how-to-protect-yourself-3a3db86e4beb" 
+           target="_blank">
+      <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*s8naHiXvwzHMT6nL" alt="Article Image">
+       </a>
+      <p>Evil Twin WiFi Attacks – Spotting Risks & Protecting Yourself</p>
+    </div>
+
+    <!-- ARTICLE 6 -->
+    <div class="medium-card">
+       <a href="https://medium.com/@falolopopololopopo/how-to-run-keyloggers-in-mobile-devices-e738778983e8" 
+           target="_blank">
+      <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*27ATbAzaVPbaxSKo.jpg" alt="Article Image">
+        </a>
+      <p>How Keyloggers Work in Mobile Devices – Full Guide</p>
+    </div>
+  </div> 
+ 
+    <div class="more-articles">
+      <a href="https://medium.com/@falolopopololopopo" target="_blank">
+        See More Articles on My Medium →
+      </a>
+    </div>
+</section>
+
+
+
+
+
+</section>
+  <section id="projects">
+     <div class="projects-container">
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+   <!-- Project 1 -->
+    <div class="project-row">
+      <a href="https://github.com/cyberwolf6938/evil-twin-attack" target="_blank" class="project-image">
+        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*s8naHiXvwzHMT6nL" alt="Project 1">
+      </a>
+      <div class="project-description">
+        <h3>Evil-Twin-Attack</h3>
+        <p>This project explains the concept of Evil Twin attack and creates awareness for beginners in cybersecurity about Wi-Fi threats.</p>
+      </div>
+    </div>
+     <!-- Project 2 -->
+  <div class="project-row reverse">
+    <div class="project-description">
+      <h3>Live Mobile</h3>
+      <p>LiveMobile is a lightweight, script-based tool for monitoring mobile-related events and activities.
+It is designed for educational and cybersecurity purposes, demonstrating real-time monitoring and automation skills.
+</p>
+    </div>
+    <a href="https://github.com/cyberwolf6938/LiveMobile" target="_blank" class="project-image">
+      <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*27ATbAzaVPbaxSKo.jpg" alt="Project 2">
+    </a>
+  </div>
+   <!-- Project 3 -->
+  <div class="project-row">
+    <a href="https://github.com/cyberwolf6938/PhishMasterX" target="_blank" class="project-image">
+      <img src="https://news.umanitoba.ca/wp-content/uploads/2024/03/microsoft-phishing-tool-1200x837.jpg" alt="Project 3">
+    </a>
+    <div class="project-description">
+      <h3>Phish Master X</h3>
+      <p>A powerful all-in-one phishing toolkit for cybersecurity training. Includes modules for website cloning, QR-based phishing, email phishing, Browser-in-the-Browser attacks, Wi-Fi captive portal phishing, and real-time dashboard monitoring.</p>
+    </div>
+  </div>
+ <div class="github-btn-container">
+    <a href="https://github.com/cyberwolf6938" target="_blank" class="github-water-btn">
+        <i class="fab fa-github"></i> View More Projects
+        <span class="water"></span>
+        <span class="water"></span>
+    </a>
+</div>
+</section>
+
+
+
+
+
+
+
+<section id="certifications">
+   <div class="certifications-container">
+ <h2 class="section-title">My <span>Certifications</span></h2>
+
+
+  <div class="cert-grid">
+    <!-- Certificate 1 -->
+    <a href="https://drive.google.com/file/d/1ZH7YvDWIbXK1ne1-PjBWD-Svlv6rFMJz/view" target="_blank" class="cert-card">
+      <img src="Introduction to cybersecurity.png" alt="Certificate 1">
+    </a>
+
+    <!-- Certificate 2 -->
+    <a href="https://drive.google.com/file/d/1oA4ToBarY9tyabjPSxlUsv-W-p4ThayZ/view" target="_blank" class="cert-card">
+      <img src="Ethical Hacker.png" alt="Certificate 2">
+    </a>
+
+    <!-- Certificate 3 -->
+    <a href="https://drive.google.com/file/d/16R05bkb0ce9iR3PBPw0yZFeAYxU1Z-jI/view" target="_blank" class="cert-card">
+      <img src="Linux Essentials.png" alt="Certificate 3">
+    </a>
+
+    <!-- Certificate 4 -->
+    <a href="https://drive.google.com/file/d/1NJrHCDZjU_Siv0LCi95ui5U2u4RGUe0I/view" target="_blank" class="cert-card">
+      <img src="Python Essentials.png" alt="Certificate 4">
+    </a>
+
+    <!-- Certificate 5 -->
+    <a href="https://drive.google.com/file/d/1jfrmyT4C5wM9zbfljU4sxlJI2dKCyxsy/view" target="_blank" class="cert-card">
+      <img src="Computer Hardware Basics.png" alt="Certificate 5">
+    </a>
+
+    <!-- Certificate 6 -->
+    <a href="https://drive.google.com/file/d/1oUEyN0KvX4StwjTuxdV7snYdd2rmtevp/view" target="_blank" class="cert-card">
+      <img src="Endpoint Security.png" alt="Certificate 6">
+    </a>
+
+    <a href="https://drive.google.com/file/d/1-CJkqX5PRpW8mWjIlamiDild4L6zBn5g/view" target="_blank" class="cert-card">
+      <img src="Network Defense.png" alt="Certificate 6">
+    </a>
+    <a href="https://drive.google.com/file/d/1_XiPsjKRNVs39PjfYDFWMN3oJh4Eq-l7/view" target="_blank" class="cert-card">
+      <img src="Cyber Threat Management.png" alt="Certificate 6">
+    </a>
+    <a href="https://drive.google.com/file/d/1d6Au_EXvm2f64Y_kLR1xFO9zkkmze-Wb/view" target="_blank" class="cert-card">
+      <img src="Introduction to cloud security.png" alt="Certificate 6">
+    </a>
+    <a href="https://drive.google.com/file/d/1H6BGMuUwz2jJ9_b98awBF2LQvBHFYuUb/view" target="_blank" class="cert-card">
+      <img src="Microsoft Azure.png" alt="Certificate 6">
+    </a>
+    <a href="https://drive.google.com/file/d/1NeK_PG9Ym8ZQej_1yc1pnFoxF8T2qUO8/view" target="_blank" class="cert-card">
+      <img src="AWS.png" alt="Certificate 6">
+    </a>
+    <!-- Add more certificates as needed -->
+  </div>
+</section>
+
+  <section id="contact">
+    <section class="contact-section">
+<h2 class="section-title">Get in <span>Touch</span></h2>
+
+    <div class="contact-container">
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/faiz-uddin-8bbb39348" target="_blank" class="contact-box linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/cyberwolf6938" target="_blank" class="contact-box github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </a>
+
+        <!-- Gmail -->
+        <a href="mailto:faizfaheem6938@gmail.com" class="contact-box gmail">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+        </a>
+
+        <!-- Medium -->
+        <a href="https://medium.com/@falolopopololopopo" target="_blank" class="contact-box medium">
+            <i class="fab fa-medium"></i>
+            <span>Medium</span>
+        </a>
+
+        <!-- Blog -->
+        <a href="https://thecyberwolf-blog.blogspot.com/" target="_blank" class="contact-box blog">
+            <i class="fas fa-blog"></i>
+            <span>Blog</span>
+        </a>
+
+    </div>
+</section>
+<script>
+function copyEmail() {
+    navigator.clipboard.writeText("faizfaheem6938@gmail.com");
+    const msg = document.getElementById("copyMessage");
+    msg.style.opacity = 1;
+    setTimeout(() => msg.style.opacity = 0, 2000);
+}
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
