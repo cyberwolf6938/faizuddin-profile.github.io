@@ -1104,3 +1104,168 @@ body {
     height: 140px;
   }
 }
+/* ===========================
+   MOBILE RESPONSIVE FIXES
+   (DO NOT AFFECT DESKTOP)
+=========================== */
+
+@media (max-width: 768px) {
+
+  /* HERO SECTION */
+  #hero-ultra {
+    flex-direction: column;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-left h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-left h3 {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  /* DOWNLOAD CV BUTTON */
+  .download-btn {
+    display: inline-block;
+    margin: 20px auto 0;
+    font-size: 1rem;
+  }
+
+  /* PROFILE IMAGE */
+  .cyber-frame {
+    margin-top: 35px;
+    width: 220px;
+    height: 220px;
+  }
+
+  /* SOCIAL ICONS */
+  .hero-socials {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .hero-socials a {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+
+  .hero-socials::before {
+    width: 50%;
+  }
+
+  /* SECTION SPACING FIX */
+  section {
+    margin-bottom: 100px;
+  }
+
+  /* ABOUT SECTION */
+  #about {
+    padding: 70px 20px;
+  }
+
+  .about-card {
+    padding: 25px;
+  }
+
+  .about-left h3 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .about-highlights {
+    justify-content: center;
+  }
+
+  /* SKILLS */
+  .skills-boxes {
+    padding: 0 10px;
+    margin-bottom: 120px;
+  }
+
+  .skill-box {
+    animation: none; /* smoother on mobile */
+  }
+
+  /* MEDIUM ARTICLES */
+  .medium-articles {
+    margin-top: 120px;
+  }
+
+  .medium-card img {
+    height: auto;
+  }
+
+  /* PROJECTS */
+  .project-row {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+
+  .project-description {
+    text-align: center;
+  }
+
+  .project-description h3 {
+    font-size: 1.5rem;
+  }
+
+  .project-description p {
+    font-size: 1rem;
+  }
+
+  /* GITHUB BUTTON */
+  .github-water-btn {
+    font-size: 18px;
+    padding: 14px 30px;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications {
+    padding: 80px 15px;
+  }
+
+  .cert-card img {
+    max-width: 100%;
+  }
+
+  /* CONTACT SECTION */
+  .contact-container {
+    gap: 18px;
+  }
+
+  .contact-box {
+    width: 120px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .contact-box i {
+    font-size: 32px;
+  }
+
+  /* EDUCATION */
+  .education-grid {
+    margin-bottom: 140px;
+  }
+}
+
