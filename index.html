@@ -36,11 +36,65 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Active nav highlight on scroll
+  const navLinks = document.querySelectorAll('.top-nav a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach((section) => observer.observe(section));
+
+  const revealTargets = [
+    { selector: '.section-title', className: 'reveal-split' },
+    { selector: '.about-card, .experience-card, .skill-card', className: 'reveal-float' },
+    { selector: '.medium-card, .project-row, .cert-card, .contact-box', className: 'reveal-fly' },
+    { selector: '.project-description, .about-text', className: 'reveal-wipe' },
+    { selector: '.skill-tags span, .exp-tags span', className: 'reveal-fade' },
+    { selector: '.hero-socials a, .download-btn', className: 'reveal-float' }
+  ];
+
+  revealTargets.forEach(({ selector, className }) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.classList.add('reveal', className);
+      el.style.transitionDelay = `${index * 0.06}s`;
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
 });
 </script>
 
 </head>
 <body>
+  <nav class="top-nav">
+    <a href="#hero-ultra">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#medium">Medium</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Get in Touch</a>
+  </nav>
+
   <section id="hero-ultra">
 
   <!-- LEFT TEXT AREA -->
@@ -49,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <span class="typing-line"></span>
       <span class="dark-text">Hi, I'm </span>
       <span class="neon-text">Faiz Uddin</span>
-      <a href="https://drive.google.com/file/d/14XtZIjroUKxNrZGsBWQpM4SRke07WmWI/view?usp=sharing" download class="download-btn">Download CV</a>
+      <a href="https://drive.google.com/file/d/13ZclGP5HDAKtV4YbO3pACwgmGFPKGTc7/view?usp=drive_link" download class="download-btn">Download CV</a>
     </h1>
 
     <h2>
@@ -62,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <h3>
       <span class="typing-line"></span>
       <span class="dark-text">I am a </span>
-      <span class="neon-text">Cybersecurity Expert</span>
+      <span class="neon-text">Cybersecurity Analyst</span>
     </h3>
 
     <p class="dark-text">Let's dive with me</p>
@@ -70,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <!-- SOCIAL ICONS -->
     <div class="hero-socials">
       <a href="https://github.com/cyberwolf6938" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/faiz-uddin-8bbb39348/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="www.linkedin.com/in/faiz-uddin-8bbb39348" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="mailto:faizfaheem6938@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://medium.com/@falolopopololopopo" target="_blank"><i class="fab fa-medium"></i></a>
       <a href="https://thecyberwolf-blog.blogspot.com/" target="_blank"><i class="fas fa-blog"></i></a>
@@ -95,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="about-card">
       <div class="about-left">
-        <h3>Hello! I'm <span>CyberWolf</span> 👋</h3>
+        <h3>Hello! I'm <span>Faiz Uddin</span> 👋</h3>
 
         <p class="about-text">
           I’m a passionate <strong>Cybersecurity Learner</strong> and 
@@ -143,119 +197,163 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<section id="education">
-  <h2 class="section-title"><span>Education</span></h2>
-  
-  <div class="education-grid">
-    <!-- Diploma Card -->
-    <div class="edu-card">
-      <div class="edu-card-inner">
-        <div class="edu-card-front">
-          Diploma in Advanced Cyber Security
-        </div>
-        <div class="edu-card-back">
-          PNY Training - Arfa Karim Technology
-        </div>
+<section id="experience">
+  <h2 class="section-title">My <span>Experience</span></h2>
+
+  <div class="experience-grid">
+    <div class="experience-card featured">
+      <div class="exp-header">
+        <span class="exp-badge">Self-employed</span>
+        <h3>Purple Team Cybersecurity Researcher</h3>
+        <p class="exp-company">Independent Research & Security Lab</p>
+        <p class="exp-date">September 2024 - Present · Pakistan</p>
       </div>
+
+      <p>
+        I research both offensive and defensive security techniques to understand the full attacker lifecycle and how to detect, mitigate, and counter threats in real time.
+      </p>
+
+      <ul>
+        <li>Exploring phishing automation, OSINT investigations, social engineering, and browser-based attacks.</li>
+        <li>Studying cloud security, exploit concepts, and defensive strategy analysis.</li>
+        <li>Building research-driven projects such as PhishMasterX to experiment, analyze behavior, and connect offensive actions with defensive visibility.</li>
+      </ul>
+
+      <div class="exp-tags">
+        <span>Purple Team</span>
+        <span>Threat Research</span>
+        <span>OSINT</span>
+        <span>Cloud Security</span>
+      </div>
+
+      <a href="cyberwolf.png" target="_blank" class="exp-cert-link">
+        <img src="cyberwolf.png" alt="CyberWolf Certificate">
+      </a>
     </div>
 
-    <!-- Bachelors Card -->
-    <div class="edu-card">
-      <div class="edu-card-inner">
-        <div class="edu-card-front">
-          Bachelors in Chemical Engineering 
-        </div>
-        <div class="edu-card-back">
-          University of Engineering and Technology – Lahore
-        </div>
+    <div class="experience-card">
+      <div class="exp-header">
+        <span class="exp-badge">Internship</span>
+        <h3>Cyber Security Intern</h3>
+        <p class="exp-company">CodeAlpha</p>
+        <p class="exp-date">May 2026 - June 2026 · Remote</p>
       </div>
+
+      <p>
+        Successfully completed a virtual cybersecurity internship focused on practical security concepts, analytical thinking, and team-based problem solving.
+      </p>
+
+      <ul>
+        <li>Strengthened analytical and technical problem-solving skills.</li>
+        <li>Adapted quickly to new cybersecurity tools and concepts.</li>
+        <li>Collaborated effectively and contributed to assigned tasks with strong productivity.</li>
+      </ul>
+
+      <div class="exp-tags">
+        <span>Cyber Security</span>
+        <span>Network Security</span>
+        <span>Teamwork</span>
+      </div>
+
+      <a href="codealpha.png" target="_blank" class="exp-cert-link">
+        <img src="codealpha.png" alt="CodeAlpha Certificate">
+      </a>
     </div>
 
-    <!-- Fsc Pre Engineering Card -->
-    <div class="edu-card">
-      <div class="edu-card-inner">
-        <div class="edu-card-front">
-          Fsc Pre Engineering
-        </div>
-        <div class="edu-card-back">
-          Pak Fazaia Inter College – Lahore
-        </div>
+    <div class="experience-card">
+      <div class="exp-header">
+        <span class="exp-badge">Internship</span>
+        <h3>Cybersecurity Intern</h3>
+        <p class="exp-company">Cyberster</p>
+        <p class="exp-date">March 2026 - May 2026 · Pakistan</p>
       </div>
-    </div>
 
-    <!-- Metric Card -->
-    <div class="edu-card">
-      <div class="edu-card-inner">
-        <div class="edu-card-front">
-          Metric
-        </div>
-        <div class="edu-card-back">
-          Army Public School – Lahore
-        </div>
+      <p>
+        Completed a hands-on Purple Team internship focused on offensive validation and defensive operations in a lab environment.
+      </p>
+
+      <ul>
+        <li>Performed network traffic analysis with Wireshark and monitored IDS/IPS tools including Suricata.</li>
+        <li>Conducted vulnerability assessments, threat hunting, and log analysis with SIEM platforms.</li>
+        <li>Investigated IOCs, mapped findings to MITRE ATT&CK, and contributed to incident response and digital forensics work.</li>
+      </ul>
+
+      <div class="exp-tags">
+        <span>Purple Team</span>
+        <span>SIEM</span>
+        <span>Threat Hunting</span>
+        <span>Python</span>
       </div>
+
+      <a href="cyberster.png" target="_blank" class="exp-cert-link">
+        <img src="cyberster.png" alt="Cyberster Certificate">
+      </a>
     </div>
   </div>
 </section>
 
 
 <section id="skills">
-   <div class="skills-container"></div>
-<h2 class="section-title">My <span>Skills</span></h2>
-  <div class="skills-boxes">
-
-    <div class="skill-box">
-      <h3>Technical Skills</h3>
-      <ul>
-        <li>Operating Systems: Linux (Kali, Ubuntu, Parrot), Windows (Server, 7, 10, 11)</li>
-        <li>Network Security (TCP/IP, Firewalls, VPN, IDS/IPS)</li>
-        <li>SOC Monitoring & Security Operations</li>
-        <li>Penetration Testing (Vulnerability Assessment, Web & Network Pentesting, Social Engineering)</li>
-        <li>Cloud Security: AWS, Azure basics, Azure 900, Azure 104</li>
-        <li>Cyber Threat Management & Incident Response</li>
-        <li>OSINT & Threat Intelligence</li>
-        <li>Malware Analysis & Threat Hunting</li>
-        <li>Endpoint Security Suite Management (CrowdStrike, Symantec, McAfee)</li>
-      </ul>
-    </div>
-
-    <div class="skill-box">
-      <h3>Tools & Technologies</h3>
-      <ul>
-        <li>SIEM: Splunk, QRadar, ELK</li>
-        <li>Pentesting Tools: Nmap, Metasploit, Burp Suite, SQLmap, Nikto, Hydra, Netcat, Gobuster, Aircrack-ng</li>
-        <li>Vulnerability Scanners: Nessus, OpenVAS</li>
-        <li>Packet Analysis: Wireshark, tcpdump, Suricata</li>
-        <li>Networking Labs: Cisco Packet Tracer, GNS3</li>
-        <li>Threat Intelligence / OSINT Tools: Maltego, Shodan, Recon-ng</li>
-        <li>Platforms: TryHackMe, Hack The Box, PortSwigger, DVWA, Over the Wire</li>
-      </ul>
-    </div>
-
-    <div class="skill-box">
-      <h3>Programming Languages</h3>
-      <ul>
-        <li>Python</li>
-        <li>Bash</li>
-        <li>PowerShell</li>
-        <li>GitHub</li>
-        <li>SQL</li>
-      </ul>
-    </div>
-
-    <div class="skill-box">
-      <h3>Soft Skills</h3>
-      <ul>
-        <li>Analytical Thinking & Problem Solving</li>
-        <li>Attention to Detail</li>
-        <li>Quick Learner & Adaptability</li>
-        <li>Team Collaboration & Communication</li>
-        <li>Report Writing</li>
-      </ul>
-    </div>
-
+  <div class="skills-header">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <p class="skills-intro"><span class="skills-quote">"Modern cybersecurity skills designed for defensive automation, advanced tooling, and collaborative threat research."</span></p>
   </div>
 
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3><i class="fas fa-shield-alt"></i> Security Domains</h3>
+      <p>Broad coverage across security operations, detection, and risk mitigation.</p>
+      <div class="skill-tags">
+        <span>Operating Systems: Linux (Kali, Ubuntu, Parrot), Windows (Server, 7, 10, 11)</span>
+        <span>Network Security: TCP/IP, Firewalls, VPN, IDS/IPS</span>
+        <span>SOC Monitoring & Security Operations</span>
+        <span>Penetration Testing: Vulnerability Assessment, Web & Network Pentesting, Social Engineering</span>
+        <span>Cloud Security: AWS, Azure Basics, AZ-900, AZ-104</span>
+        <span>Cyber Threat Management & Incident Response</span>
+        <span>OSINT & Threat Intelligence</span>
+        <span>Malware Analysis & Threat Hunting</span>
+        <span>Endpoint Security Suite Management: CrowdStrike, Symantec, McAfee</span>
+      </div>
+    </div>
 
+    <div class="skill-card">
+      <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+      <p>Trusted tools for monitoring, auditing, and offense/defense research.</p>
+      <div class="skill-tags">
+        <span>SIEM: Splunk, QRadar, ELK</span>
+        <span>Pentesting: Nmap, Metasploit, Burp Suite, SQLmap, Nikto, Hydra, Netcat, Gobuster, Aircrack-ng</span>
+        <span>Vuln Scanners: Nessus, OpenVAS</span>
+        <span>Packet Analysis: Wireshark, tcpdump, Suricata</span>
+        <span>Labs: Cisco Packet Tracer, GNS3</span>
+        <span>OSINT: Maltego, Shodan, Recon-ng</span>
+        <span>Platforms: TryHackMe, Hack The Box, PortSwigger, DVWA, OverTheWire</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-code"></i> Languages & Automation</h3>
+      <p>Practical scripting and infrastructure skills for secure automation.</p>
+      <div class="skill-tags">
+        <span>Python</span>
+        <span>Bash</span>
+        <span>PowerShell</span>
+        <span>SQL</span>
+        <span>Git / GitHub</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-users"></i> Professional Strengths</h3>
+      <p>Modern collaboration and research habits that align with security teams.</p>
+      <div class="skill-tags">
+        <span>Analytical Thinking</span>
+        <span>Fast Learner</span>
+        <span>Team Collaboration</span>
+        <span>Attention to Detail</span>
+        <span>Clear Reporting</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -343,36 +441,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
    <!-- Project 1 -->
     <div class="project-row">
-      <a href="https://github.com/cyberwolf6938/evil-twin-attack" target="_blank" class="project-image">
-        <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*s8naHiXvwzHMT6nL" alt="Project 1">
+      <a href="https://github.com/cyberwolf6938/PhishMasterX" target="_blank" class="project-image">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="PhishMasterX phishing toolkit">
       </a>
       <div class="project-description">
-        <h3>Evil-Twin-Attack</h3>
-        <p>This project explains the concept of Evil Twin attack and creates awareness for beginners in cybersecurity about Wi-Fi threats.</p>
+        <h3>PhishMasterX</h3>
+        <p>Multi-module phishing research toolkit built for analysis, automation, and defender visibility. Includes website cloning, email phishing, QR attacks, and targeted phishing workflows.</p>
       </div>
     </div>
-     <!-- Project 2 -->
-  <div class="project-row reverse">
-    <div class="project-description">
-      <h3>Live Mobile</h3>
-      <p>LiveMobile is a lightweight, script-based tool for monitoring mobile-related events and activities.
-It is designed for educational and cybersecurity purposes, demonstrating real-time monitoring and automation skills.
-</p>
+
+    <!-- Project 2 -->
+    <div class="project-row reverse">
+      <div class="project-description">
+        <h3>evil-twin-attack</h3>
+        <p>ESP8266-based Evil Twin WiFi attack awareness project focused on educational ethical hacking and demonstrating network spoofing risks.</p>
+      </div>
+      <a href="https://github.com/cyberwolf6938/evil-twin-attack" target="_blank" class="project-image">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Evil Twin WiFi attack">
+      </a>
     </div>
-    <a href="https://github.com/cyberwolf6938/LiveMobile" target="_blank" class="project-image">
-      <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*27ATbAzaVPbaxSKo.jpg" alt="Project 2">
-    </a>
-  </div>
-   <!-- Project 3 -->
-  <div class="project-row">
-    <a href="https://github.com/cyberwolf6938/PhishMasterX" target="_blank" class="project-image">
-      <img src="Screenshot 2026-02-11 010259.png" alt="Project 3">
-    </a>
-    <div class="project-description">
-      <h3>Phish Master X</h3>
-      <p>A powerful all-in-one phishing toolkit for cybersecurity training. Includes modules for website cloning, QR-based phishing, email phishing, Browser-in-the-Browser attacks, Wi-Fi captive portal phishing, and real-time dashboard monitoring.</p>
+
+    <!-- Project 3 -->
+    <div class="project-row">
+      <a href="https://github.com/cyberwolf6938/CodeAlpha_HyperSOC" target="_blank" class="project-image">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="SOC dashboard visualization">
+      </a>
+      <div class="project-description">
+        <h3>CodeAlpha_HyperSOC</h3>
+        <p>AI-powered SOC dashboard with real-time threat detection, MITRE ATT&CK mapping, network visualization, and live security monitoring for research-driven operations.</p>
+      </div>
     </div>
-  </div>
+
+    <!-- Project 4 -->
+    <div class="project-row reverse">
+      <div class="project-description">
+        <h3>CodeAlpha_SecureAudit-ai</h3>
+        <p>AI-assisted security auditor for Node.js applications; scans code for vulnerabilities and helps automate secure development reviews.</p>
+      </div>
+      <a href="https://github.com/cyberwolf6938/CodeAlpha_SecureAudit-ai" target="_blank" class="project-image">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Secure code audit">
+      </a>
+    </div>
+ 
  <div class="github-btn-container">
     <a href="https://github.com/cyberwolf6938" target="_blank" class="github-water-btn">
         <i class="fab fa-github"></i> View More Projects
@@ -393,53 +503,90 @@ It is designed for educational and cybersecurity purposes, demonstrating real-ti
  <h2 class="section-title">My <span>Certifications</span></h2>
 
 
-  <div class="cert-grid">
-    <!-- Certificate 1 -->
-    <a href="https://drive.google.com/file/d/1ZH7YvDWIbXK1ne1-PjBWD-Svlv6rFMJz/view" target="_blank" class="cert-card">
-      <img src="Introduction to cybersecurity.png" alt="Certificate 1">
-    </a>
+  <div class="cert-marquee">
+    <div class="cert-row cert-row-left">
+      <div class="cert-track">
+        <a href="https://drive.google.com/file/d/1ZH7YvDWIbXK1ne1-PjBWD-Svlv6rFMJz/view" target="_blank" class="cert-card"><img src="Introduction to cybersecurity.png" alt="Introduction to Cybersecurity"></a>
+        <a href="https://drive.google.com/file/d/1oA4ToBarY9tyabjPSxlUsv-W-p4ThayZ/view" target="_blank" class="cert-card"><img src="Ethical Hacker.png" alt="Ethical Hacker"></a>
+        <a href="https://drive.google.com/file/d/16R05bkb0ce9iR3PBPw0yZFeAYxU1Z-jI/view" target="_blank" class="cert-card"><img src="Linux Essentials.png" alt="Linux Essentials"></a>
+        <a href="https://drive.google.com/file/d/1NJrHCDZjU_Siv0LCi95ui5U2u4RGUe0I/view" target="_blank" class="cert-card"><img src="Python Essentials.png" alt="Python Essentials"></a>
+        <a href="https://drive.google.com/file/d/1jfrmyT4C5wM9zbfljU4sxlJI2dKCyxsy/view" target="_blank" class="cert-card"><img src="Computer Hardware Basics.png" alt="Computer Hardware Basics"></a>
+        <a href="https://drive.google.com/file/d/1oUEyN0KvX4StwjTuxdV7snYdd2rmtevp/view" target="_blank" class="cert-card"><img src="Endpoint Security.png" alt="Endpoint Security"></a>
+        <a href="https://drive.google.com/file/d/1-CJkqX5PRpW8mWjIlamiDild4L6zBn5g/view" target="_blank" class="cert-card"><img src="Network Defense.png" alt="Network Defense"></a>
+        <a href="https://drive.google.com/file/d/1_XiPsjKRNVs39PjfYDFWMN3oJh4Eq-l7/view" target="_blank" class="cert-card"><img src="Cyber Threat Management.png" alt="Cyber Threat Management"></a>
+        <a href="https://drive.google.com/file/d/1ZH7YvDWIbXK1ne1-PjBWD-Svlv6rFMJz/view" target="_blank" class="cert-card"><img src="Introduction to cybersecurity.png" alt="Introduction to Cybersecurity"></a>
+        <a href="https://drive.google.com/file/d/1oA4ToBarY9tyabjPSxlUsv-W-p4ThayZ/view" target="_blank" class="cert-card"><img src="Ethical Hacker.png" alt="Ethical Hacker"></a>
+        <a href="https://drive.google.com/file/d/16R05bkb0ce9iR3PBPw0yZFeAYxU1Z-jI/view" target="_blank" class="cert-card"><img src="Linux Essentials.png" alt="Linux Essentials"></a>
+        <a href="https://drive.google.com/file/d/1NJrHCDZjU_Siv0LCi95ui5U2u4RGUe0I/view" target="_blank" class="cert-card"><img src="Python Essentials.png" alt="Python Essentials"></a>
+        <a href="https://drive.google.com/file/d/1jfrmyT4C5wM9zbfljU4sxlJI2dKCyxsy/view" target="_blank" class="cert-card"><img src="Computer Hardware Basics.png" alt="Computer Hardware Basics"></a>
+        <a href="https://drive.google.com/file/d/1oUEyN0KvX4StwjTuxdV7snYdd2rmtevp/view" target="_blank" class="cert-card"><img src="Endpoint Security.png" alt="Endpoint Security"></a>
+        <a href="https://drive.google.com/file/d/1-CJkqX5PRpW8mWjIlamiDild4L6zBn5g/view" target="_blank" class="cert-card"><img src="Network Defense.png" alt="Network Defense"></a>
+        <a href="https://drive.google.com/file/d/1_XiPsjKRNVs39PjfYDFWMN3oJh4Eq-l7/view" target="_blank" class="cert-card"><img src="Cyber Threat Management.png" alt="Cyber Threat Management"></a>
+      </div>
+    </div>
 
-    <!-- Certificate 2 -->
-    <a href="https://drive.google.com/file/d/1oA4ToBarY9tyabjPSxlUsv-W-p4ThayZ/view" target="_blank" class="cert-card">
-      <img src="Ethical Hacker.png" alt="Certificate 2">
-    </a>
+    <div class="cert-row cert-row-right">
+      <div class="cert-track">
+        <a href="https://drive.google.com/file/d/1d6Au_EXvm2f64Y_kLR1xFO9zkkmze-Wb/view" target="_blank" class="cert-card"><img src="Introduction to cloud security.png" alt="Introduction to Cloud Security"></a>
+        <a href="https://drive.google.com/file/d/1H6BGMuUwz2jJ9_b98awBF2LQvBHFYuUb/view" target="_blank" class="cert-card"><img src="Microsoft Azure.png" alt="Microsoft Azure"></a>
+        <a href="https://drive.google.com/file/d/1NeK_PG9Ym8ZQej_1yc1pnFoxF8T2qUO8/view" target="_blank" class="cert-card"><img src="AWS.png" alt="AWS"></a>
+        <a href="advent%20of%20cyber.png" target="_blank" class="cert-card"><img src="advent%20of%20cyber.png" alt="Advent of Cyber"></a>
+        <a href="comptia%20%2B.png" target="_blank" class="cert-card"><img src="comptia%20%2B.png" alt="CompTIA+"></a>
+        <a href="cybersecurity%20architecture.png" target="_blank" class="cert-card"><img src="cybersecurity%20architecture.png" alt="Cybersecurity Architecture"></a>
+        <a href="cybersecurity%20compliance.png" target="_blank" class="cert-card"><img src="cybersecurity%20compliance.png" alt="Cybersecurity Compliance"></a>
+        <a href="cybersecurity%20identity.png" target="_blank" class="cert-card"><img src="cybersecurity%20identity.png" alt="Cybersecurity Identity"></a>
+        <a href="https://drive.google.com/file/d/1d6Au_EXvm2f64Y_kLR1xFO9zkkmze-Wb/view" target="_blank" class="cert-card"><img src="Introduction to cloud security.png" alt="Introduction to Cloud Security"></a>
+        <a href="https://drive.google.com/file/d/1H6BGMuUwz2jJ9_b98awBF2LQvBHFYuUb/view" target="_blank" class="cert-card"><img src="Microsoft Azure.png" alt="Microsoft Azure"></a>
+        <a href="https://drive.google.com/file/d/1NeK_PG9Ym8ZQej_1yc1pnFoxF8T2qUO8/view" target="_blank" class="cert-card"><img src="AWS.png" alt="AWS"></a>
+        <a href="advent%20of%20cyber.png" target="_blank" class="cert-card"><img src="advent%20of%20cyber.png" alt="Advent of Cyber"></a>
+        <a href="comptia%20%2B.png" target="_blank" class="cert-card"><img src="comptia%20%2B.png" alt="CompTIA+"></a>
+        <a href="cybersecurity%20architecture.png" target="_blank" class="cert-card"><img src="cybersecurity%20architecture.png" alt="Cybersecurity Architecture"></a>
+        <a href="cybersecurity%20compliance.png" target="_blank" class="cert-card"><img src="cybersecurity%20compliance.png" alt="Cybersecurity Compliance"></a>
+        <a href="cybersecurity%20identity.png" target="_blank" class="cert-card"><img src="cybersecurity%20identity.png" alt="Cybersecurity Identity"></a>
+      </div>
+    </div>
 
-    <!-- Certificate 3 -->
-    <a href="https://drive.google.com/file/d/16R05bkb0ce9iR3PBPw0yZFeAYxU1Z-jI/view" target="_blank" class="cert-card">
-      <img src="Linux Essentials.png" alt="Certificate 3">
-    </a>
+    <div class="cert-row cert-row-left">
+      <div class="cert-track">
+        <a href="cybersecurity%20threat%20vectors.png" target="_blank" class="cert-card"><img src="cybersecurity%20threat%20vectors.png" alt="Cybersecurity Threat Vectors"></a>
+        <a href="database%20essential%20and%20vulnerabilities.png" target="_blank" class="cert-card"><img src="database%20essential%20and%20vulnerabilities.png" alt="Database Essentials and Vulnerabilities"></a>
+        <a href="exploitation%20and%20penetration%20testing.png" target="_blank" class="cert-card"><img src="exploitation%20and%20penetration%20testing.png" alt="Exploitation and Penetration Testing"></a>
+        <a href="ibm%20cybersecurity%20analyst.png" target="_blank" class="cert-card"><img src="ibm%20cybersecurity%20analyst.png" alt="IBM Cybersecurity Analyst"></a>
+        <a href="ibm%20ethical%20hacking.png" target="_blank" class="cert-card"><img src="ibm%20ethical%20hacking.png" alt="IBM Ethical Hacking"></a>
+        <a href="incident%20response%20and%20defense%20with%20openvas.png" target="_blank" class="cert-card"><img src="incident%20response%20and%20defense%20with%20openvas.png" alt="Incident Response and Defense with OpenVAS"></a>
+        <a href="incident%20response%20and%20digital%20forensic.png" target="_blank" class="cert-card"><img src="incident%20response%20and%20digital%20forensic.png" alt="Incident Response and Digital Forensics"></a>
+        <a href="intro%20to%20cybersecurity%20career.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20career.png" alt="Intro to Cybersecurity Career"></a>
+        <a href="cybersecurity%20threat%20vectors.png" target="_blank" class="cert-card"><img src="cybersecurity%20threat%20vectors.png" alt="Cybersecurity Threat Vectors"></a>
+        <a href="database%20essential%20and%20vulnerabilities.png" target="_blank" class="cert-card"><img src="database%20essential%20and%20vulnerabilities.png" alt="Database Essentials and Vulnerabilities"></a>
+        <a href="exploitation%20and%20penetration%20testing.png" target="_blank" class="cert-card"><img src="exploitation%20and%20penetration%20testing.png" alt="Exploitation and Penetration Testing"></a>
+        <a href="ibm%20cybersecurity%20analyst.png" target="_blank" class="cert-card"><img src="ibm%20cybersecurity%20analyst.png" alt="IBM Cybersecurity Analyst"></a>
+        <a href="ibm%20ethical%20hacking.png" target="_blank" class="cert-card"><img src="ibm%20ethical%20hacking.png" alt="IBM Ethical Hacking"></a>
+        <a href="incident%20response%20and%20defense%20with%20openvas.png" target="_blank" class="cert-card"><img src="incident%20response%20and%20defense%20with%20openvas.png" alt="Incident Response and Defense with OpenVAS"></a>
+        <a href="incident%20response%20and%20digital%20forensic.png" target="_blank" class="cert-card"><img src="incident%20response%20and%20digital%20forensic.png" alt="Incident Response and Digital Forensics"></a>
+        <a href="intro%20to%20cybersecurity%20career.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20career.png" alt="Intro to Cybersecurity Career"></a>
+      </div>
+    </div>
 
-    <!-- Certificate 4 -->
-    <a href="https://drive.google.com/file/d/1NJrHCDZjU_Siv0LCi95ui5U2u4RGUe0I/view" target="_blank" class="cert-card">
-      <img src="Python Essentials.png" alt="Certificate 4">
-    </a>
-
-    <!-- Certificate 5 -->
-    <a href="https://drive.google.com/file/d/1jfrmyT4C5wM9zbfljU4sxlJI2dKCyxsy/view" target="_blank" class="cert-card">
-      <img src="Computer Hardware Basics.png" alt="Certificate 5">
-    </a>
-
-    <!-- Certificate 6 -->
-    <a href="https://drive.google.com/file/d/1oUEyN0KvX4StwjTuxdV7snYdd2rmtevp/view" target="_blank" class="cert-card">
-      <img src="Endpoint Security.png" alt="Certificate 6">
-    </a>
-
-    <a href="https://drive.google.com/file/d/1-CJkqX5PRpW8mWjIlamiDild4L6zBn5g/view" target="_blank" class="cert-card">
-      <img src="Network Defense.png" alt="Certificate 6">
-    </a>
-    <a href="https://drive.google.com/file/d/1_XiPsjKRNVs39PjfYDFWMN3oJh4Eq-l7/view" target="_blank" class="cert-card">
-      <img src="Cyber Threat Management.png" alt="Certificate 6">
-    </a>
-    <a href="https://drive.google.com/file/d/1d6Au_EXvm2f64Y_kLR1xFO9zkkmze-Wb/view" target="_blank" class="cert-card">
-      <img src="Introduction to cloud security.png" alt="Certificate 6">
-    </a>
-    <a href="https://drive.google.com/file/d/1H6BGMuUwz2jJ9_b98awBF2LQvBHFYuUb/view" target="_blank" class="cert-card">
-      <img src="Microsoft Azure.png" alt="Certificate 6">
-    </a>
-    <a href="https://drive.google.com/file/d/1NeK_PG9Ym8ZQej_1yc1pnFoxF8T2qUO8/view" target="_blank" class="cert-card">
-      <img src="AWS.png" alt="Certificate 6">
-    </a>
-    <!-- Add more certificates as needed -->
+    <div class="cert-row cert-row-right">
+      <div class="cert-track">
+        <a href="intro%20to%20cybersecurity%20essential.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20essential.png" alt="Intro to Cybersecurity Essentials"></a>
+        <a href="intro%20to%20cybersecurity%20tool%20%26%20cyberattack.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20tool%20%26%20cyberattack.png" alt="Intro to Cybersecurity Tools and Cyberattacks"></a>
+        <a href="intro%20to%20ethical%20hacking%20principles.png" target="_blank" class="cert-card"><img src="intro%20to%20ethical%20hacking%20principles.png" alt="Intro to Ethical Hacking Principles"></a>
+        <a href="intro%20to%20networking%20and%20cloud%20computing.png" target="_blank" class="cert-card"><img src="intro%20to%20networking%20and%20cloud%20computing.png" alt="Intro to Networking and Cloud Computing"></a>
+        <a href="introduction%20to%20computer.png" target="_blank" class="cert-card"><img src="introduction%20to%20computer.png" alt="Introduction to Computer"></a>
+        <a href="network%20traffic%20analysis%20with%20wireshark.png" target="_blank" class="cert-card"><img src="network%20traffic%20analysis%20with%20wireshark.png" alt="Network Traffic Analysis with Wireshark"></a>
+        <a href="operating%20system.png" target="_blank" class="cert-card"><img src="operating%20system.png" alt="Operating System"></a>
+        <a href="penetration%20testing.png" target="_blank" class="cert-card"><img src="penetration%20testing.png" alt="Penetration Testing"></a>
+        <a href="intro%20to%20cybersecurity%20essential.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20essential.png" alt="Intro to Cybersecurity Essentials"></a>
+        <a href="intro%20to%20cybersecurity%20tool%20%26%20cyberattack.png" target="_blank" class="cert-card"><img src="intro%20to%20cybersecurity%20tool%20%26%20cyberattack.png" alt="Intro to Cybersecurity Tools and Cyberattacks"></a>
+        <a href="intro%20to%20ethical%20hacking%20principles.png" target="_blank" class="cert-card"><img src="intro%20to%20ethical%20hacking%20principles.png" alt="Intro to Ethical Hacking Principles"></a>
+        <a href="intro%20to%20networking%20and%20cloud%20computing.png" target="_blank" class="cert-card"><img src="intro%20to%20networking%20and%20cloud%20computing.png" alt="Intro to Networking and Cloud Computing"></a>
+        <a href="introduction%20to%20computer.png" target="_blank" class="cert-card"><img src="introduction%20to%20computer.png" alt="Introduction to Computer"></a>
+        <a href="network%20traffic%20analysis%20with%20wireshark.png" target="_blank" class="cert-card"><img src="network%20traffic%20analysis%20with%20wireshark.png" alt="Network Traffic Analysis with Wireshark"></a>
+        <a href="operating%20system.png" target="_blank" class="cert-card"><img src="operating%20system.png" alt="Operating System"></a>
+        <a href="penetration%20testing.png" target="_blank" class="cert-card"><img src="penetration%20testing.png" alt="Penetration Testing"></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -495,9 +642,3 @@ function copyEmail() {
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
